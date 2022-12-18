@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Big Snow
+Exec=/usr/bin/big-snow
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=
+NoDisplay=true

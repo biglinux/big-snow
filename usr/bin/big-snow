@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ "$(date +%d%m)" = "2412" ];then
+    xsnow -hidemenu -notrees -norudolph -nowind -aurora 0 -showbirds 0 -moon 0 -nometeors -stars 0 -nomenu
+fi
