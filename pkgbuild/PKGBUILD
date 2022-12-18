@@ -1,6 +1,6 @@
 # Maintainer: Barnabé di Kartola <barnabedikartola@gmail.com>
 
-pkgname=biglinux-snow
+pkgname=big-snow
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
 pkgdesc="Happy Day"
