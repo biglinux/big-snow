@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/share/applications/xsnow.desktop
+
+[Action]
+Description = remove xsnow .desktop
+When = PostTransaction
+Exec = rm /usr/share/applications/xsnow.desktop
