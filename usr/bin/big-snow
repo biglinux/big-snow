@@ -1,5 +1,17 @@
 #!/bin/bash
 
-if [ "$(date +%d%m)" = "2412" ];then
-    xsnow -hidemenu -notrees -norudolph -nowind -aurora 0 -showbirds 0 -moon 0 -nometeors -stars 0 -nomenu
+value=`cat $HOME/.big_xsnow`
+
+# Verifica se a mensagem já foi exibida em algum momento, caso sim não é perguntada a opção do usuário
+if  [ -z $value ] || [ $value = 0 ]; then
+    kdialog --title "Feliz Natal!" --yesno "A equipe do Big Linux deseja à tods um feliz natal! Gostaria de ver a surpresa que preparamos para você?"
+    
+    # Caso o usuário decida ver a animação, ela é exibida e o valor 0 é gravado no arquivo de configuração
+    if [ $? = 0 ] && [ "$(date +%d%m)" = "2412" ]; then
+        xsnow -hidemenu -notrees -norudolph -nowind -aurora 0 -showbirds 0 -moon 0 -nometeors -stars 0 -nomenu
+        echo "0" > $HOME/.big_xsnow 
+    else
+        # Caso o usuário decida não ver a animação, ela é exibida e o valor 1 é gravado no arquivo de configuração
+        echo "1" > $HOME/.big_xsnow
+    fi
 fi
