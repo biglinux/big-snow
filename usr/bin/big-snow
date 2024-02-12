@@ -1,5 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# shellcheck shell=bash disable=SC1091,SC2039,SC2166
 
-if [ "$(date +%d%m)" = "2412" ];then
-    xsnow -hidemenu -notrees -norudolph -nowind -aurora 0 -showbirds 0 -moon 0 -nometeors -stars 0 -nomenu
+value=1
+if [ -e "$HOME/.big_xsnow" ]; then
+	value="$(<"$HOME/.big_xsnow")"
+fi
+
+if [ "$(date +%d%m)" = "2412" ]; then
+	# Verifica se a mensagem foi exibida em algum momento
+	if ((value)); then
+		if kdialog --title "Feliz Natal!" --yesno "\nA equipe Big Linux deseja um feliz natal!\nGostaria de ver a surpresa que preparamos para você?\n"; then
+			# Caso o usuário decida ver a animação, ela é exibida e o valor 1 é gravado no arquivo de configuração
+			xsnow -hidemenu -notrees -norudolph -nowind -aurora 0 -showbirds 0 -moon 0 -nometeors -stars 0 -nomenu
+		else
+			# Caso o usuário decida não ver a animação, ela é exibida e o valor 0 é gravado no arquivo de configuração
+			value=0
+		fi
+		echo "$value" > "$HOME/.big_xsnow"
+	fi
 fi
